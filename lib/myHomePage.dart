@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'progress.dart';
 import 'taskList.dart';
+import 'button.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -14,6 +15,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           Progress(),
           TaskList(),
+          ColorChanger(),
         ],
       ),
     );

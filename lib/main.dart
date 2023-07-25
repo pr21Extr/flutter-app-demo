@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
       title:"Çheckit out ",
       theme: ThemeData.dark(),
       home:MyHomePage()
+
     );
   }
 }
