@@ -51,13 +51,16 @@ class Screen2 extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // Center the button vertically
         children: [
-          ElevatedButton(
-            onPressed: () {
-              navigateBack(
-                  context); // Use the function to navigate back to Screen1
-            },
-            child: Text('Go Back to Screen 1'),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                navigateBack(
+                    context); // Use the function to navigate back to Screen1
+              },
+              child: Text('Go Back to Screen 1'),
+            ),
           ),
         ],
       ),
