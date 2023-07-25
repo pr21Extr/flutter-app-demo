@@ -1,40 +1,5 @@
 import 'package:flutter/material.dart';
-// class ElevatedButtonWidget extends StatefulWidget {
-//   const ElevatedButtonWidget({super.key});
-//
-//   @override
-//   State<ElevatedButtonWidget> createState() => _ElevatedButtonWidgetState();
-// }
-//
-// class _ElevatedButtonWidgetState extends State<ElevatedButtonWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final ButtonStyle style =
-//     ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-//
-//     return Center(
-//       child: Column(
-//         mainAxisSize: MainAxisSize.min,
-//         children: <Widget>[
-//
-//           ElevatedButton(
-//             style: style,
-//             onPressed: () {
-//               // changeBackgroundColor();
-//             },
-//             child: const Text('Click Me',
-//             style:TextStyle()),
-//
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-//
-//
 
-import 'package:flutter/material.dart';
 
 class ColorChanger extends StatefulWidget {
   @override
@@ -67,7 +32,7 @@ class _ColorChangerState extends State<ColorChanger> {
               changeBackgroundColor();
             },
             child:  Text(
-              'Click Me',
+              'Click Me To Change Colors',
               style: textStyle,
             ),
           ),
