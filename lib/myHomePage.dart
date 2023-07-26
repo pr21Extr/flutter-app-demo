@@ -10,7 +10,7 @@ class MyHomePage extends StatelessWidget {
 void navigateToScreen2(BuildContext context) {
 Navigator.push(
 context,
-MaterialPageRoute(builder: (context) => Screen2()),
+MaterialPageRoute(builder: (context) => TodosScreen(todos: [],)),
 );
 }
 @override
