@@ -32,9 +32,10 @@ class _ColorChangerState extends State<ColorChanger> {
               changeBackgroundColor();
             },
             child:  Text(
-              'Click Me To Change Colors',
+              'Click Me To Change Button Colors',
               style: textStyle,
             ),
+            ///move color logic to higher in tree and enable theme switch
           ),
         ],
       ),

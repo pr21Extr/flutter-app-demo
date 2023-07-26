@@ -3,7 +3,7 @@ import 'myHomePage.dart';
 import 'package:firstapptwo/todoListScreen.dart';
 
 void main() {
-  runApp(MyApp()); // Run MyApp instead of TodosScreen directly
+  runApp(MyApp()); // First class to run
 }
 
 

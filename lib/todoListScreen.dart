@@ -62,17 +62,13 @@ class TodosScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
-            // When a user taps the ListTile, navigate to the DetailScreen.
-            // Notice that you're not only creating a DetailScreen, you're
-            // also passing the current todo through to it.
+
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const DetailScreen(),
-                  // Pass the arguments as part of the RouteSettings. The
-                  // DetailScreen reads the arguments from these settings.
-                  settings: RouteSettings(
+                 settings: RouteSettings(
                     arguments: todos[index],
                   ),
                 ),
