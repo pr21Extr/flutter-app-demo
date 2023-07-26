@@ -8,7 +8,8 @@ import 'todoListScreen.dart';
 class MyHomePage extends StatelessWidget {
 
   void navigateToScreen2(BuildContext context) {
-    List<Todo> todosList = List.generate(15, (i) => Todo('Todo $i', 'Description $i'));
+
+    List<Todo> todosList = List.generate(15, (i) => Todo('Todo ${i+1}', 'Description $i'));
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => TodosScreen(todos: todosList)),

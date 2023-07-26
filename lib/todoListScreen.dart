@@ -19,7 +19,7 @@ class TodosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todos'),
+        title: const Text('Todos List'),
       ),
       body: ListView.builder(
         itemCount: todos.length,
@@ -49,7 +49,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final todo = ModalRoute.of(context)!.settings.arguments as Todo;
-    // Use the Todo to create the UI.
+
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
