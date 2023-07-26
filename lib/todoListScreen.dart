@@ -1,37 +1,3 @@
-// import 'package:flutter/material.dart';
-//
-// class Screen2 extends StatelessWidget {
-//   // Function to navigate back to Screen1
-//   void navigateBack(BuildContext context) {
-//     Navigator.pop(context);
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Todos List'),
-//         centerTitle: true,
-//       ),
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.end, // Center the button vertically
-//         children: [
-//           Center(
-//             child: ElevatedButton(
-//               onPressed: () {
-//                 navigateBack(
-//                     context); // Use the function to navigate back to Screen1
-//               },
-//               child: Text('Go Back to home page'),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
 
 class Todo {
@@ -41,7 +7,6 @@ class Todo {
   const Todo(this.title, this.description);
 }
 
-
 class TodosScreen extends StatelessWidget {
   const TodosScreen({super.key, required this.todos});
 
@@ -50,7 +15,6 @@ class TodosScreen extends StatelessWidget {
   void navigateBack(BuildContext context) {
     Navigator.pop(context);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +26,6 @@ class TodosScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
-
             onTap: () {
               Navigator.push(
                 context,
@@ -83,11 +46,9 @@ class TodosScreen extends StatelessWidget {
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final todo = ModalRoute.of(context)!.settings.arguments as Todo;
-
     // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
