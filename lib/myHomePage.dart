@@ -7,12 +7,14 @@ import 'todoListScreen.dart';
 
 class MyHomePage extends StatelessWidget {
 
-void navigateToScreen2(BuildContext context) {
-Navigator.push(
-context,
-MaterialPageRoute(builder: (context) => TodosScreen(todos: [],)),
-);
-}
+  void navigateToScreen2(BuildContext context) {
+    List<Todo> todosList = List.generate(15, (i) => Todo('Todo $i', 'Description $i'));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => TodosScreen(todos: todosList)),
+    );
+  }
+
 @override
   Widget build (BuildContext context ){
     return Scaffold(
@@ -27,11 +29,12 @@ MaterialPageRoute(builder: (context) => TodosScreen(todos: [],)),
           ColorChanger(),
           ElevatedButton(
             onPressed: () {
-              navigateToScreen2(context); // Use the function to navigate to Screen2
+              navigateToScreen2(context); // Use the function to navigate to TodosScreen
             },
             child: Text('Go to Todos List Screen '),
           ),
           // Screen1(),
+
         ],
       ),
     );
