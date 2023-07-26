@@ -6,7 +6,7 @@ class Progress extends StatelessWidget{
     return Column(
       children: [
         const  Text('Lorus ipsum'),
-        const  LinearProgressIndicator(value: 0.0,)
+        const  LinearProgressIndicator(value: 0.25,)
       ],
     );
   }
