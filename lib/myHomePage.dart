@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'progress.dart';
 import 'taskList.dart';
 import 'button.dart';
-import 'screen2.dart';
+import 'todoListScreen.dart';
 
 class MyHomePage extends StatelessWidget {
 
@@ -29,7 +29,7 @@ MaterialPageRoute(builder: (context) => Screen2()),
             onPressed: () {
               navigateToScreen2(context); // Use the function to navigate to Screen2
             },
-            child: Text('Go to Screen 2'),
+            child: Text('Go to Todos List Screen '),
           ),
           // Screen1(),
         ],
