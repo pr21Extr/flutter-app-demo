@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Todo {
   final String title;
@@ -7,14 +9,39 @@ class Todo {
   const Todo(this.title, this.description);
 }
 
-class TodosScreen extends StatelessWidget {
-  const TodosScreen({super.key, required this.todos});
+class TodosScreen extends StatefulWidget {
+  const TodosScreen({Key? key}) : super(key: key);
 
-  final List<Todo> todos;
+  @override
+  _TodosScreenState createState() => _TodosScreenState();
+}
+
+class _TodosScreenState extends State<TodosScreen> {
+  List<Todo> todos = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchTodos();
+  }
+
+  Future<void> fetchTodos() async {
+    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = jsonDecode(response.body);
+      setState(() {
+        todos = jsonResponse.map((data) => Todo(data['title'], data['completed'] ? 'Completed' : 'Not completed')).toList();
+      });
+    } else {
+      throw Exception('Failed to load todos');
+    }
+  }
 
   void navigateBack(BuildContext context) {
     Navigator.pop(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +57,7 @@ class TodosScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DetailScreen(),
-                 settings: RouteSettings(
-                    arguments: todos[index],
-                  ),
+                  builder: (context) => DetailScreen(todo: todos[index]),
                 ),
               );
             },
@@ -45,11 +69,12 @@ class TodosScreen extends StatelessWidget {
 }
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  final Todo todo;
+
+  const DetailScreen({Key? key, required this.todo}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final todo = ModalRoute.of(context)!.settings.arguments as Todo;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
