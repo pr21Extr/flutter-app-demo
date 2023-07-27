@@ -15,17 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: '/',
       routes: {
-        '/': (context) =>TodosScreen()
-        // '/': (context) => MyHomePage(), // Define route for MyHomePage
-        // '/todos': (context) => TodosScreen(
-        //   todos: List.generate(
-        //     15,
-        //         (i) => Todo(
-        //       'Todo $i',
-        //       'A description of what needs to be done for Todo $i',
-        //     ),
-        //   ),
-        // ), // Define route for TodosScreen
+
+        '/': (context) => MyHomePage(), // Define route for MyHomePage
+        '/todos': (context) => TodosScreen()
+         // Define route for TodosScreen
       },
     );
   }
