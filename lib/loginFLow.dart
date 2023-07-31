@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginFlow extends StatefulWidget {
   @override
@@ -9,7 +11,7 @@ class _LoginFlowState extends State<LoginFlow> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? _username;
   String? _password;
-  bool _obscureText = true; // Track whether the password is obscured or not
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class _LoginFlowState extends State<LoginFlow> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
+
               decoration: InputDecoration(labelText: 'Username'),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -43,7 +46,7 @@ class _LoginFlowState extends State<LoginFlow> {
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
-                      _obscureText = !_obscureText; // Toggle the '_obscureText' value
+                      _obscureText = !_obscureText;
                     });
                   },
                   icon: Icon(
@@ -64,7 +67,11 @@ class _LoginFlowState extends State<LoginFlow> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                ///todo add POST logic                }
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                  print('check if im called');
+                  _performLogin();    //login function
+                }
               },
               child: Text('Login'),
             ),
@@ -72,5 +79,35 @@ class _LoginFlowState extends State<LoginFlow> {
         ),
       ),
     );
+  }
+
+  void _performLogin() async {
+    var url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+    };
+
+    Map<String, dynamic> requestBody = {
+      'username': _username,
+      'password': _password,
+    };
+
+    try {
+      var response = await http.post(
+        url,
+        headers: headers,
+        body: json.encode(requestBody),
+      );
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        Map<String, dynamic> responseData = json.decode(response.body);
+        print('Login successful! Response: $responseData');
+      } else {
+        print('Login failed. Status Code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error occurred: $e');
+    }
   }
 }
