@@ -17,111 +17,120 @@ class _LoginFlowState extends State<LoginFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+      body: Container(
         color: Colors.white60,
         padding: const EdgeInsets.all(20.0),
-    child: Align(
-    alignment: Alignment.topLeft, // Align the column to the top left
-    child: Padding(
-    padding: const EdgeInsets.only(top: 50.0), // Adjust top padding to raise the login elements higher
-    child: Form(
-    key: _formKey,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    // Logo or App Icon (Optional)
-    // Image.asset(
-    //   'assets/app_logo.png',
-    //   height: 150,
-    //   width: 150,
-    // ),
-    Row(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-    Text("Login",
-    style: TextStyle(
-      fontSize: 30
-    ),
-    ),
-    ],
-    ),
-    SizedBox(height: 25),
-    SizedBox(height: 100),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your username';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _username = value;
-                },
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                    icon: Icon(
-                      _obscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Login",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 25),
+                  Card(
+                    elevation: 3,
+                    color: Colors.grey[100],
+
+
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Username',
+                              border:UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.cyanAccent)
+                              ),
+
+                              prefixIcon: Icon(Icons.person),
+                              labelStyle: TextStyle(color:Colors.deepPurpleAccent)
+
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your username';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _username = value;
+                            },
+                          ),
+                          SizedBox(height: 30),
+                          TextFormField(
+                            obscureText: _obscureText,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                                labelStyle: TextStyle(color:Colors.deepPurpleAccent),
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(Icons.lock),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your password';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _password = value;
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _password = value;
-                },
-              ),
-              SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end, // Align the button to the right
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        _performLogin();
-                      }
-                    },
-                    child: Text('Login'),
-                    style: ElevatedButton.styleFrom(
-                      // Set the button's width to 120 (adjust as needed)
-                      minimumSize: Size(120, 40),
-                      primary:Colors.deepPurpleAccent
-                    ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            _performLogin();
+                          }
+                        },
+                        child: Text('Login'),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(100, 30),
+                          primary: Colors.deepPurpleAccent,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),
-    ),
-        ),
     );
   }
-
 
   void _performLogin() async {
     var url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
@@ -161,3 +170,4 @@ class _LoginFlowState extends State<LoginFlow> {
     );
   }
 }
+
