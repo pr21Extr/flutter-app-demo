@@ -9,6 +9,7 @@ class _LoginFlowState extends State<LoginFlow> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? _username;
   String? _password;
+  bool _obscureText = true; // Track whether the password is obscured or not
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,20 @@ class _LoginFlowState extends State<LoginFlow> {
             ),
             SizedBox(height: 20),
             TextFormField(
-              obscureText: true, // Mask the password
-              decoration: InputDecoration(labelText: 'Password'),
+              obscureText: _obscureText,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText; // Toggle the '_obscureText' value
+                    });
+                  },
+                  icon: Icon(
+                    _obscureText ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                  ),
+                ),
+              ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password';
@@ -51,7 +64,7 @@ class _LoginFlowState extends State<LoginFlow> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                ///add POST logic to onClick
+                ///todo add POST logic                }
               },
               child: Text('Login'),
             ),
