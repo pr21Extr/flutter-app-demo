@@ -1,3 +1,4 @@
+import 'package:firstapptwo/loginFLow.dart';
 import 'package:flutter/material.dart';
 import 'myHomePage.dart';
 import 'package:firstapptwo/todoListScreen.dart';
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: '/',
       routes: {
-
-        '/': (context) => MyHomePage(), // Define route for MyHomePage
+      '/': (context)=>LoginFlow(),
+        // '/': (context) => MyHomePage(), // Define route for MyHomePage
         '/todos': (context) => TodosScreen()
          // Define route for TodosScreen
       },
