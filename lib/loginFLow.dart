@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'todoListScreen.dart';
+
 class LoginFlow extends StatefulWidget {
   @override
   _LoginFlowState createState() => _LoginFlowState();
@@ -20,30 +21,32 @@ class _LoginFlowState extends State<LoginFlow> {
       body: Container(
         color: Colors.white,
         padding: const EdgeInsets.all(20.0),
-
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all( 20.0),
-                child:
 
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child:
                 Text(
                   "Login",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 30,
+
+                      color: Colors.black),
                 ),
               ),
-              Image.asset(
-                'assets/header.jpg',
-                height: 150,
-                width: 150,
-              ),
-              SizedBox(height:70),
+              // Image.asset(
+              //   '/assets/header.jpg',
+              //   height: 50,
+              //   width: 50,
+              // ),
+              SizedBox(height: 70),
               Card(
-                elevation: 3,
+                elevation: 5,
                 color: Colors.white60,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -52,7 +55,7 @@ class _LoginFlowState extends State<LoginFlow> {
                       TextFormField(
                         decoration: const InputDecoration(
                           labelText: 'Username',
-                           prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.person,color: Colors.deepPurpleAccent),
                           labelStyle: TextStyle(color: Colors.deepPurpleAccent),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.cyanAccent),
@@ -73,7 +76,7 @@ class _LoginFlowState extends State<LoginFlow> {
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: Icon(Icons.lock, color: Colors.deepPurpleAccent), // Set the icon color here
                           suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -82,6 +85,7 @@ class _LoginFlowState extends State<LoginFlow> {
                             },
                             icon: Icon(
                               _obscureText ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.deepPurpleAccent, // Set the icon color here
                             ),
                           ),
                           labelStyle: TextStyle(color: Colors.deepPurpleAccent),
@@ -105,9 +109,9 @@ class _LoginFlowState extends State<LoginFlow> {
               ),
               SizedBox(height: 36),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Remember me', style: TextStyle(color: Colors.purpleAccent)),
+
                   Radio<bool>(
                     value: true,
                     groupValue: _rememberMe,
@@ -118,7 +122,9 @@ class _LoginFlowState extends State<LoginFlow> {
                     },
                     activeColor: Colors.deepPurpleAccent,
                   ),
-                  SizedBox(width: 16,height: 40),
+                  Text('Remember me',
+                      style: TextStyle(color: Colors.purpleAccent,fontSize: 18)),
+                  SizedBox(width: 16, height: 40),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -130,13 +136,26 @@ class _LoginFlowState extends State<LoginFlow> {
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(100, 30),
                       primary: Colors.deepPurpleAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20), // Adjust the value as needed for the desired roundness
+                      ),
                     ),
-                    
                   ),
 
-
+                  SizedBox(height: 80),
                 ],
+
               ),
+
+              SizedBox(height: 80),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black)),   //insert image here later
+                  Text('Sign up', style: TextStyle(fontSize: 30, color: Colors.black)),
+                ],
+              )
             ],
           ),
         ),
@@ -171,7 +190,7 @@ class _LoginFlowState extends State<LoginFlow> {
         print('Login failed. Status Code: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error occurred: $e');
+      print('Error occurred:   ''  $e');
     }
   }
 
