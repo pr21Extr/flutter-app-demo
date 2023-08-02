@@ -28,22 +28,26 @@ class _LoginFlowState extends State<LoginFlow> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child:
-                Text(
-                  "Login",
-                  style: TextStyle(
-                      fontSize: 30,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                      "Login",
+                      style: TextStyle(
+                          fontSize: 30,
 
-                      color: Colors.black),
-                ),
+                          color: Colors.black),
+                    ),
+                  Image.asset(
+                    'assets/header.jpg',
+                    height: 100,
+                    width: 90,
+                  ),
+                ],
+
               ),
-              // Image.asset(
-              //   '/assets/header.jpg',
-              //   height: 50,
-              //   width: 50,
-              // ),
+
+
               SizedBox(height: 70),
               Card(
                 elevation: 5,
@@ -152,7 +156,11 @@ class _LoginFlowState extends State<LoginFlow> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black)),   //insert image here later
+                  Image.asset(
+                    'assets/footer.jpg',
+                    height: 80,
+                    width: 90,
+                  ),
                   Text('Sign up', style: TextStyle(fontSize: 30, color: Colors.black)),
                 ],
               )
