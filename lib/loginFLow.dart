@@ -57,6 +57,7 @@ class _LoginFlowState extends State<LoginFlow> {
                   child: Column(
                     children: [
                       TextFormField(
+                      style: TextStyle(color: Colors.black54),
                         decoration: const InputDecoration(
                           labelText: 'Username',
                           prefixIcon: Icon(Icons.person,color: Colors.deepPurpleAccent),
@@ -77,6 +78,7 @@ class _LoginFlowState extends State<LoginFlow> {
                       ),
                       SizedBox(height: 20),
                       TextFormField(
+                        style: TextStyle(color: Colors.black54),
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           labelText: 'Password',
