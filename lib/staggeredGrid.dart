@@ -8,13 +8,14 @@ class StaggeredGridViewExample extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Staggered Grid '),
+          backgroundColor: Colors.pinkAccent,
         ),
         body: StaggeredGridView.countBuilder(
           crossAxisCount: 4,
           itemCount: 20,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              color: Colors.blue,
+              color: Colors.cyan,
               child: Center(
                 child: Text('Tile $index'),
               ),
