@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        '/': (context)=>LoginFlow(),
+        // '/': (context)=>LoginFlow(),
+        '/': (context)=>StaggeredGridViewExample(),
+    ,
 
         '/todos': (context) => TodosScreen()
          // Define route for TodosScreen
