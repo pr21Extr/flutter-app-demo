@@ -3,6 +3,8 @@ import 'package:firstapptwo/staggeredGrid.dart';
 import 'package:flutter/material.dart';
 import 'myHomePage.dart';
 import 'package:firstapptwo/todoListScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() {
   runApp(MyApp()); // First class to run
