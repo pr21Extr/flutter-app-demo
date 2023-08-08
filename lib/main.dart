@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
         // '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
-        '/': (context)=>phoneNumber(),
+        '/': (context)=>LoginWithPhone(),
 
 
         '/todos': (context) => TodosScreen()
