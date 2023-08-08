@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'todoListScreen.dart';
 
 class LoginFlow extends StatefulWidget {
+
   @override
   _LoginFlowState createState() => _LoginFlowState();
 }
@@ -137,8 +141,9 @@ class _LoginFlowState extends State<LoginFlow> {
                         _formKey.currentState!.save();
                         _performLogin();
                       }
+
                     },
-                    child: Text('Login'),
+                    child: Text(' Login'),
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(100, 30),
                       primary: Colors.deepPurpleAccent,
@@ -153,7 +158,23 @@ class _LoginFlowState extends State<LoginFlow> {
 
               ),
 
-              SizedBox(height: 80),
+              ElevatedButton(
+                onPressed: () {
+                  signInwithGoogle();
+
+
+                },
+                child: Text('Google Login'),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(100, 30),
+                  primary: Colors.deepPurpleAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20), // Adjust the value as needed for the desired roundness
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 40),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,6 +192,23 @@ class _LoginFlowState extends State<LoginFlow> {
         ),
       ),
     );
+  }
+
+
+
+
+  signInwithGoogle() async {
+    GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+
+
+    AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken:googleAuth?.accessToken,
+      idToken:googleAuth?.idToken,
+    );
+    UserCredential userCred= await FirebaseAuth.instance.signInWithCredential(credential);
+    print (userCred.user?.displayName);
   }
 
   void _performLogin() async {
