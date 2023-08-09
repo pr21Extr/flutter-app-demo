@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstapptwo/otpLogin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,6 +8,7 @@ import 'dart:convert';
 import 'todoListScreen.dart';
 
 class LoginFlow extends StatefulWidget {
+
 
   @override
   _LoginFlowState createState() => _LoginFlowState();
@@ -18,6 +20,14 @@ class _LoginFlowState extends State<LoginFlow> {
   String? _password;
   bool _obscureText = true;
   bool _rememberMe = true;
+
+  void navToOTP(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginWithPhone()),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -158,20 +168,44 @@ class _LoginFlowState extends State<LoginFlow> {
 
               ),
 
-              ElevatedButton(
-                onPressed: () {
-                  signInwithGoogle();
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                  children:[
+
+                  ElevatedButton(
+                    onPressed: () {
+                      signInwithGoogle();
 
 
-                },
-                child: Text('Google Login'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(100, 30),
-                  primary: Colors.deepPurpleAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Adjust the value as needed for the desired roundness
+                    },
+                    child: Text('Google Login'),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(100, 30),
+                      primary: Colors.deepPurpleAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20), // Adjust the value as needed for the desired roundness
+                      ),
+                    ),
                   ),
-                ),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to OTP screen
+                      navToOTP(context);
+
+
+                    },
+                    child: Text('OTP Login'),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(100, 30),
+                      primary: Colors.deepPurpleAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20), // Adjust the value as needed for the desired roundness
+                      ),
+                    ),
+                  ),
+                ]
               ),
 
               SizedBox(height: 40),
