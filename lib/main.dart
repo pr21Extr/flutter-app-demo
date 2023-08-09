@@ -1,3 +1,4 @@
+import 'package:firstapptwo/firestoreData.dart';
 import 'package:firstapptwo/loginFLow.dart';
 import 'package:firstapptwo/otpLogin.dart';
 import 'package:firstapptwo/staggeredGrid.dart';
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        '/': (context)=>LoginFlow(),
+        // '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
         // '/': (context)=>LoginWithPhone(),
+        '/': (context)=>FireWrite(),
 
 
         '/todos': (context) => TodosScreen()

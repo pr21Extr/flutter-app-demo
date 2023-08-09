@@ -45,7 +45,7 @@ class _LoginFlowState extends State<LoginFlow> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                       "Login",
                       style: TextStyle(
                           fontSize: 30,
@@ -62,7 +62,8 @@ class _LoginFlowState extends State<LoginFlow> {
               ),
 
 
-              SizedBox(height: 70),
+              const SizedBox(height: 70),
+
               Card(
                 elevation: 5,
                 color: Colors.white60,
