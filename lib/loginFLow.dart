@@ -6,6 +6,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'todoListScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class LoginFlow extends StatefulWidget {
 
@@ -20,6 +22,20 @@ class _LoginFlowState extends State<LoginFlow> {
   String? _password;
   bool _obscureText = true;
   bool _rememberMe = true;
+  late SharedPreferences _prefs;
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedCredentials();
+  }
+
+  void _loadSavedCredentials() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _username = _prefs.getString('usernamePrefill') ?? '';
+      _password = _prefs.getString('passwordPrefill') ?? '';
+    });
+  }
 
   void navToOTP(BuildContext context) {
     Navigator.push(
@@ -72,6 +88,7 @@ class _LoginFlowState extends State<LoginFlow> {
                   child: Column(
                     children: [
                       TextFormField(
+                        initialValue: _username,
                       style: TextStyle(color: Colors.black54),
                         decoration: const InputDecoration(
                           labelText: 'Username',
@@ -93,6 +110,7 @@ class _LoginFlowState extends State<LoginFlow> {
                       ),
                       SizedBox(height: 20),
                       TextFormField(
+                        initialValue: _password,
                         style: TextStyle(color: Colors.black54),
                         obscureText: _obscureText,
                         decoration: InputDecoration(
@@ -268,12 +286,17 @@ class _LoginFlowState extends State<LoginFlow> {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         Map<String, dynamic> responseData = json.decode(response.body);
         print('Login successful! Response: $responseData');
+
+        // Save the credentials using the correct shared preferences keys
+        _prefs.setString('usernamePrefill', _username!);
+        _prefs.setString('passwordPrefill', _password!);
+
         _navigateToTodosScreen(); // Navigate to TodosScreen after successful login
       } else {
         print('Login failed. Status Code: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error occurred:   ''  $e');
+      print('Error occurred: $e');
     }
   }
 

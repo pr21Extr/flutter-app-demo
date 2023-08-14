@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        // '/': (context)=>LoginFlow(),
+        '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
         // '/': (context)=>LoginWithPhone(),
-        '/': (context)=>FireWrite(),
+        // '/': (context)=>FireWrite(),
 
 
         '/todos': (context) => TodosScreen()
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+///firebase,firestore,todoList, OTP login, staggered grid integrate into a better flow
 
 
 
