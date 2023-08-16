@@ -46,6 +46,7 @@ dependencies:
   firebase_auth: ^4.7.2
   google_sign_in: ^6.1.4
   cloud_firestore: ^4.8.4
+  camera: ^0.10.3
 
 dev_dependencies:
   flutter_test:

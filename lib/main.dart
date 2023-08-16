@@ -1,3 +1,5 @@
+import 'package:camera/camera.dart';
+import 'package:firstapptwo/camera.dart';
 import 'package:firstapptwo/firestoreData.dart';
 import 'package:firstapptwo/loginFLow.dart';
 import 'package:firstapptwo/otpLogin.dart';
@@ -9,9 +11,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 
+late List<CameraDescription> cameras;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized
+  cameras = await availableCameras();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform, // Initialize Firebase
   );
@@ -30,10 +34,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        '/': (context)=>LoginFlow(),
+        // '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
         // '/': (context)=>LoginWithPhone(),
         // '/': (context)=>FireWrite(),
+
+        '/': (context)=>CameraApp(),
 
 
         '/todos': (context) => TodosScreen()
