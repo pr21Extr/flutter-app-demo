@@ -40,6 +40,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
               keyboardType: TextInputType.phone,
             ),
 
+
             Visibility(child: TextField(
               controller: otpController,
               decoration: InputDecoration(),

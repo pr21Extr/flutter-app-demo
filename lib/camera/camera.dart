@@ -16,7 +16,7 @@ class _CameraAppState extends State<CameraApp> {
   @override
   void initState() {
     super.initState();
-    _controller = CameraController(cameras[0], ResolutionPreset.max);
+    _controller = CameraController(cameras[1], ResolutionPreset.max);
     _controller
         .initialize()
         .then((_) => {if (!mounted) {}, setState(() {})})
@@ -38,9 +38,12 @@ class _CameraAppState extends State<CameraApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Container(
-          height: double.infinity,
-          child: CameraPreview(_controller),
+        Center(
+          child: Container(
+            margin: EdgeInsets.all(20.00),
+            height: double.infinity,
+            child: CameraPreview(_controller),
+          ),
         ),
         RawMaterialButton(
             onPressed: () async {
@@ -49,6 +52,14 @@ class _CameraAppState extends State<CameraApp> {
               }
               if (!_controller.value.isTakingPicture){
                 return null;
+              }
+              try{
+                await _controller.setFlashMode(FlashMode.auto);
+                XFile picture =await _controller.takePicture();
+              }
+              on CameraException catch (e){
+                  print ('error : $e');
+                  return null;
               }
             },
           child: Text('Take photo'),

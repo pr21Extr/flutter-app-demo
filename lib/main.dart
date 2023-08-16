@@ -1,5 +1,5 @@
 import 'package:camera/camera.dart';
-import 'package:firstapptwo/camera.dart';
+import 'package:firstapptwo/camera/camera.dart';
 import 'package:firstapptwo/firestoreData.dart';
 import 'package:firstapptwo/loginFLow.dart';
 import 'package:firstapptwo/otpLogin.dart';
