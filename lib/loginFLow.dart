@@ -58,7 +58,7 @@ class _LoginFlowState extends State<LoginFlow> {
   void navToOTP(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LoginWithPhone()),
+      MaterialPageRoute(builder: (context) =>const LoginWithPhone()),
     );
   }
 
