@@ -48,6 +48,7 @@ dependencies:
   cloud_firestore: ^4.8.4
   camera: ^0.10.3
   crypto: ^3.0.3
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
