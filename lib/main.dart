@@ -5,6 +5,7 @@ import 'package:firstapptwo/loginFLow.dart';
 import 'package:firstapptwo/otpLogin.dart';
 import 'package:firstapptwo/staggeredGrid.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'myHomePage.dart';
 import 'package:firstapptwo/todoListScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +20,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform, // Initialize Firebase
   );
-  runApp(MyApp()); // First class to run
+  runApp(
+      ChangeNotifierProvider(
+        create: (context) => CameraProvider(),
+        child: MyApp(),
+      )
+  ); // First class to run
 }
 
 
