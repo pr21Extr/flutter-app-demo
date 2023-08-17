@@ -34,12 +34,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        // '/': (context)=>LoginFlow(),
+        '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
         // '/': (context)=>LoginWithPhone(),
         // '/': (context)=>FireWrite(),
 
-        '/': (context)=>CameraApp(),
+        // '/': (context)=>CameraApp(),
 
 
         '/todos': (context) => TodosScreen()

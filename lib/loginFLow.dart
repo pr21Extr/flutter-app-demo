@@ -7,6 +7,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'todoListScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
+import 'dart:math';
+
 
 
 class LoginFlow extends StatefulWidget {
@@ -27,6 +31,20 @@ class _LoginFlowState extends State<LoginFlow> {
   void initState() {
     super.initState();
     _loadSavedCredentials();
+  }
+
+
+
+  void _saveHashedPassword(String plainPassword) async {
+
+    final salt = Random().hashCode.toString();
+    final codec = Utf8Codec();
+    final bytes = codec.encode(plainPassword + salt);
+    final digest = sha256.convert(bytes);
+
+    final hashedPassword = digest.toString();
+
+    await _prefs.setString('hashedPassword', hashedPassword);
   }
 
   void _loadSavedCredentials() async {
@@ -287,11 +305,9 @@ class _LoginFlowState extends State<LoginFlow> {
         Map<String, dynamic> responseData = json.decode(response.body);
         print('Login successful! Response: $responseData');
 
-        // Save the credentials using the correct shared preferences keys
-        _prefs.setString('usernamePrefill', _username!);
-        _prefs.setString('passwordPrefill', _password!);
+        _saveHashedPassword(_password!);
 
-        _navigateToTodosScreen(); // Navigate to TodosScreen after successful login
+        _navigateToTodosScreen();
       } else {
         print('Login failed. Status Code: ${response.statusCode}');
       }
