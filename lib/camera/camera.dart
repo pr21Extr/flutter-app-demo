@@ -38,46 +38,42 @@ class _CameraAppState extends State<CameraApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [
-        Center(
-          child: Container(
-            margin: EdgeInsets.all(20.00),
-            height: double.infinity,
-            child: CameraPreview(_controller),
+      body: Stack(
+        children: [
+          Center(
+            child: Container(
+              margin: EdgeInsets.all(20.00),
+              height: double.infinity,
+              child: CameraPreview(_controller),
+            ),
           ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: RawMaterialButton(
-            onPressed: () async {
-              if (!_controller.value.isInitialized) {
-                return null;
-              }
-              if (!_controller.value.isTakingPicture) {
-                return null;
-              }
-              try {
-                await _controller.setFlashMode(FlashMode.auto);
-                XFile file = await _controller.takePicture();
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => ImagePreview(file)));
-                print('enters here');
-
-                    }
-                    on CameraException catch (e)
-                {
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: RawMaterialButton(
+              onPressed: () async {
+                // if (!_controller.value.isInitialized) {
+                //   return null;
+                // }
+                // if (!_controller.value.isTakingPicture) {
+                //   return null;
+                // }
+                try {
+                  await _controller.setFlashMode(FlashMode.auto);
+                  XFile file = await _controller.takePicture();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ImagePreview(file)));
+                } on CameraException catch (e) {
                   print('error : $e');
                   return null;
                 }
               },
-
-            child: Text('Take photo'),
-
-          ),
-        )
-      ],
+              child: Text('Take photo'),
+            ),
+          )
+        ],
       ),
-
     );
   }
 }
