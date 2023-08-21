@@ -47,7 +47,6 @@ class MyApp extends StatelessWidget {
 
         // '/': (context)=>CameraApp(),
 
-
         '/todos': (context) => TodosScreen()
          // Define route for TodosScreen
       },
