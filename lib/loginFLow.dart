@@ -74,25 +74,29 @@ class _LoginFlowState extends State<LoginFlow> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
+
             children: [
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                      "Login",
-                      style: TextStyle(
-                          fontSize: 30,
+              Expanded(
+                child: Row(
 
-                          color: Colors.black),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 30,
+
+                            color: Colors.black),
+                      ),
+                    Image.asset(
+                      'assets/header.jpg',
+                      height: 100,
+                      width: 90,
                     ),
-                  Image.asset(
-                    'assets/header.jpg',
-                    height: 100,
-                    width: 90,
-                  ),
-                ],
+                  ],
 
+                ),
               ),
 
 
