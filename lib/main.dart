@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:firstapptwo/camera/camera.dart';
+import 'package:firstapptwo/expansionList.dart';
 import 'package:firstapptwo/firestoreData.dart';
 import 'package:firstapptwo/loginFLow.dart';
 import 'package:firstapptwo/otpLogin.dart';
@@ -35,15 +36,19 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: "Check it out",
-      theme: ThemeData.dark(),
+      // theme: ThemeData.dark(),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        '/': (context)=>LoginFlow(),
+        // '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
         // '/': (context)=>LoginWithPhone(),
         // '/': (context)=>FireWrite(),
+        '/': (context)=>HomePage(),
 
         // '/': (context)=>CameraApp(),
 
