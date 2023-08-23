@@ -14,8 +14,8 @@ class _HomePageState extends State<HomePage> {
         'id': index,
         'title': 'Item $index',
         'description':
-        'This is the description of the item $index. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        'isExpanded': false
+        'This is the description of the item $index. ',
+            'isExpanded': false
       });
 
   @override
@@ -31,11 +31,13 @@ class _HomePageState extends State<HomePage> {
           // Controlling the expansion behavior
           expansionCallback: (index, isExpanded) {
             setState(() {
-              _items[index]['isExpanded'] = !isExpanded;
+              _items[index]['isExpanded'] = !_items[index]['isExpanded'];
+              print (_items[index]['isExpanded']);
             });
           },
           animationDuration: Duration(milliseconds: 600),
           children: _items
+
               .map(
                 (item) => ExpansionPanel(
               canTapOnHeader: true,
