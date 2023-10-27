@@ -288,6 +288,7 @@ class _LoginFlowState extends State<LoginFlow> {
 
   void _performLogin() async {
     var url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+    print('API call');
 
     Map<String, String> headers = {
       'Content-Type': 'application/json',

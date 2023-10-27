@@ -44,11 +44,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'MyHomePage': (context) => MyHomePage(), // Define route for MyHomePage
-        // '/': (context)=>LoginFlow(),
+        '/': (context)=>LoginFlow(),
         // '/': (context)=>StaggeredGridViewExample(),
         // '/': (context)=>LoginWithPhone(),
         // '/': (context)=>FireWrite(),
-        '/': (context)=>HomePage(),
+        // '/': (context)=>HomePage(),
 
         // '/': (context)=>CameraApp(),
 
