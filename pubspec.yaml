@@ -50,6 +50,8 @@ dependencies:
   crypto: ^3.0.3
   provider: ^6.0.5
   firebase_performance: ^0.9.3+2
+  dio_request_inspector: ^2.2.0
+  image_picker: ^1.0.4
 
 dev_dependencies:
   flutter_test:
